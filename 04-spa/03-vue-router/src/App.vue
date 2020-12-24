@@ -4,17 +4,26 @@
       <header class="header">
         <div>
           <h1>
-            <a href="/"><img src="@/assets/logo.svg" alt="Meetups" /></a>
+            <router-link :to="{ name: 'index' }">
+              <img src="@/assets/logo.svg" alt="Meetups" />
+            </router-link>
           </h1>
         </div>
         <nav>
-          <a href="#">Вход</a>
-          <a href="#">Регистрация</a>
-          <a href="#">Создать митап</a>
+          <router-link
+            v-if="
+              $route.matched.some((route) => route.meta.showReturnToMeetups)
+            "
+            :to="{ name: 'meetups' }"
+            >&larr; Вернуться к списку</router-link
+          >
+          <router-link to="/login">Вход</router-link>
+          <router-link to="#">Регистрация</router-link>
+          <router-link to="#">Создать митап</router-link>
         </nav>
       </header>
       <main class="main">
-        <meetups-page />
+        <router-view />
       </main>
       <footer class="footer">
         <div class="container">
@@ -27,13 +36,8 @@
 </template>
 
 <script>
-import MeetupsPage from './components/MeetupsPage';
-
 export default {
   name: 'App',
-  components: {
-    MeetupsPage,
-  },
 };
 </script>
 

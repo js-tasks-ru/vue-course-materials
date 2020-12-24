@@ -1,5 +1,8 @@
 <template>
-  <a :href="`/meetups/${meetup.id}`" class="meetups-list__item">
+  <router-link
+    :to="{ name: 'meetup', params: { meetupId: meetup.id } }"
+    class="meetups-list__item"
+  >
     <div class="meetups-list__col">
       <div
         class="meetups-list__cover"
@@ -29,12 +32,14 @@
           </li>
           <li>
             <app-icon icon="cal-lg" class="info-list__icon" />
-            <time :datetime="meetup.ISODate">{{ meetup.localDate }}</time>
+            <time :datetime="meetup.dateOnlyString">{{
+              meetup.localDate
+            }}</time>
           </li>
         </ul>
       </div>
     </div>
-  </a>
+  </router-link>
 </template>
 
 <script>
