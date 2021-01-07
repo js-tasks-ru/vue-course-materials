@@ -1,22 +1,23 @@
 <template>
-  <form class="form meetup-form">
+  <form class="form meetup-form" @submit.prevent="handleSubmit">
     <div class="meetup-form__content">
       <fieldset class="form-section">
         <div class="form-group">
           <label class="form-label">Название</label>
-          <input class="form-control" v-model="meetup.title" />
+          <input class="form-control" v-model="meetup_.title" />
         </div>
         <div class="form-group">
           <label class="form-label">Место проведения</label>
-          <input class="form-control" v-model="meetup.place" />
+          <input class="form-control" v-model="meetup_.place" />
         </div>
       </fieldset>
 
       <h3 class="form__section-title">Программа</h3>
       <meetup-agenda-item-form
-        v-for="(agendaItem, idx) in meetup.agenda"
+        v-for="(agendaItem, idx) in meetup_.agenda"
         :key="agendaItem.id"
         :agenda-item="agendaItem"
+        @change="updateAgendaItem(idx, $event)"
         @remove="removeAgendaItem(idx)"
         class="mb-3"
       />
@@ -43,6 +44,7 @@
 
 <script>
 import MeetupAgendaItemForm from './MeetupAgendaItemForm';
+import { deepClone } from '../utils';
 
 function createAgendaItem() {
   return {
@@ -71,14 +73,28 @@ export default {
     },
   },
 
+  data() {
+    return {
+      meetup_: deepClone(this.meetup),
+    };
+  },
+
   methods: {
     addAgendaItem() {
       const newItem = createAgendaItem();
-      this.meetup.agenda.push(newItem);
+      this.meetup_.agenda.push(newItem);
+    },
+
+    updateAgendaItem(idx, newAgendaItem) {
+      this.meetup_.agenda.splice(idx, 1, newAgendaItem);
     },
 
     removeAgendaItem(idx) {
-      this.meetup.agenda.splice(idx, 1);
+      this.meetup_.agenda.splice(idx, 1);
+    },
+
+    handleSubmit() {
+      this.$emit('submit', deepClone(this.meetup_));
     },
   },
 };

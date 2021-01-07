@@ -52,6 +52,7 @@
 <script>
 import AppIcon from '@/components/AppIcon';
 import { deepClone } from '@/utils';
+import { deepEqual } from '../utils';
 
 export default {
   name: 'MeetupAgendaItemForm',
@@ -69,11 +70,21 @@ export default {
 
   data() {
     return {
-      agendaItem_: deepClone(this.agendaItem),
+      agendaItem_: null,
     };
   },
 
   watch: {
+    agendaItem: {
+      deep: true,
+      immediate: true,
+      handler(newValue) {
+        if (!deepEqual(newValue, this.agendaItem_)) {
+          this.agendaItem_ = deepClone(this.agendaItem);
+        }
+      },
+    },
+
     agendaItem_: {
       deep: true,
       handler(newValue) {

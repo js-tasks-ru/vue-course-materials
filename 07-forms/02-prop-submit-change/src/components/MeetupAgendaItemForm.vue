@@ -5,7 +5,7 @@
     </button>
 
     <div class="form-group">
-      <select v-model="agendaItem.type" title="Тип">
+      <select v-model="agendaItem_.type" title="Тип">
         <option value="other">Другое</option>
       </select>
     </div>
@@ -16,7 +16,7 @@
           <label class="form-label">Начало</label>
           <input
             class="form-control"
-            v-model="agendaItem.startsAt"
+            v-model="agendaItem_.startsAt"
             type="time"
             placeholder="00:00"
           />
@@ -27,7 +27,7 @@
           <label class="form-label">Окончание</label>
           <input
             class="form-control"
-            v-model="agendaItem.endsAt"
+            v-model="agendaItem_.endsAt"
             type="time"
             placeholder="00:00"
           />
@@ -37,15 +37,17 @@
 
     <div class="form-group">
       <label class="form-label">Заголовок</label>
-      <input class="form-control" v-model="agendaItem.title" />
+      <input class="form-control" v-model="agendaItem_.title" />
     </div>
     <div class="form-group">
       <label class="form-label">Описание</label>
       <textarea
         class="form-control"
-        v-model="agendaItem.description"
+        v-model="agendaItem_.description"
       ></textarea>
     </div>
+
+    <button class="button button_secondary" type="button" @click="handleChange">Save</button>
   </div>
 </template>
 
@@ -62,8 +64,20 @@ export default {
     },
   },
 
+  data() {
+    return {
+      agendaItem_: { ...this.agendaItem },
+    };
+  },
+
   components: {
     AppIcon,
+  },
+
+  methods: {
+    handleChange() {
+      this.$emit('change', { ...this.agendaItem_ });
+    },
   },
 };
 </script>

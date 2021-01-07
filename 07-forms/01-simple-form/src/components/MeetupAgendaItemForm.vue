@@ -1,11 +1,11 @@
 <template>
   <div class="form-section form-section_inner">
-    <button type="button" class="remove-button">
+    <button type="button" class="remove-button" @click="$emit('remove')">
       <app-icon icon="trash" />
     </button>
 
     <div class="form-group">
-      <select title="Тип">
+      <select v-model="agendaItem.type" title="Тип">
         <option value="other">Другое</option>
       </select>
     </div>
@@ -16,6 +16,7 @@
           <label class="form-label">Начало</label>
           <input
             class="form-control"
+            v-model="agendaItem.startsAt"
             type="time"
             placeholder="00:00"
           />
@@ -26,6 +27,7 @@
           <label class="form-label">Окончание</label>
           <input
             class="form-control"
+            v-model="agendaItem.endsAt"
             type="time"
             placeholder="00:00"
           />
@@ -35,12 +37,13 @@
 
     <div class="form-group">
       <label class="form-label">Заголовок</label>
-      <input class="form-control" />
+      <input class="form-control" v-model="agendaItem.title" />
     </div>
     <div class="form-group">
       <label class="form-label">Описание</label>
       <textarea
         class="form-control"
+        v-model="agendaItem.description"
       ></textarea>
     </div>
   </div>
@@ -51,6 +54,13 @@ import AppIcon from '@/components/AppIcon';
 
 export default {
   name: 'MeetupAgendaItemForm',
+
+  props: {
+    agendaItem: {
+      type: Object,
+      required: true,
+    },
+  },
 
   components: {
     AppIcon,

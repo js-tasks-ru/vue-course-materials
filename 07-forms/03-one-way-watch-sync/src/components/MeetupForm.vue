@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="onSubmit" class="form meetup-form">
+  <form class="form meetup-form">
     <div class="meetup-form__content">
       <fieldset class="form-section">
         <div class="form-group">
@@ -16,8 +16,8 @@
       <meetup-agenda-item-form
         v-for="(agendaItem, idx) in meetup_.agenda"
         :key="agendaItem.id"
-        :agenda-item="agendaItem"
-        @change="updateAgendaItem(idx, $event)"
+        :agendaItem="agendaItem"
+        @update:agendaItem="updateAgendaItem(idx, $event)"
         @remove="removeAgendaItem(idx)"
         class="mb-3"
       />
@@ -79,6 +79,15 @@ export default {
     };
   },
 
+  watch: {
+    meetup_: {
+      deep: true,
+      handler() {
+        this.$emit('update:meetup', deepClone(this.meetup_));
+      },
+    },
+  },
+
   methods: {
     addAgendaItem() {
       const newItem = createAgendaItem();
@@ -91,10 +100,6 @@ export default {
 
     removeAgendaItem(idx) {
       this.meetup_.agenda.splice(idx, 1);
-    },
-
-    onSubmit() {
-      this.$emit('submit', deepClone(this.meetup_));
     },
   },
 };
