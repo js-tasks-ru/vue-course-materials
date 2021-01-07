@@ -1,0 +1,122 @@
+.form {
+    margin: 0;
+}
+
+.form__buttons {
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    margin-top: 40px;
+}
+
+.form__append {
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.form__buttons .button + .button {
+    margin-bottom: 8px;
+}
+
+.form-section {
+    border: none;
+    position: relative;
+}
+
+.form-section + .form-section {
+    margin-top: 24px;
+}
+
+.form-section.form-section_inner {
+    padding: 20px 10% 0 16px;
+    border: 2px solid var(--blue-light);
+    border-radius: 8px;
+}
+
+.form-section_inner .remove-button {
+    position: absolute;
+    top: 4px;
+    right: 0;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    padding: 4px;
+    cursor: pointer;
+    transition: .2s all;
+}
+
+.form-section_inner .remove-button:hover {
+    opacity: .6;
+}
+
+.form__section-title {
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 150%;
+    color: var(--body-color);
+    margin: 0 0 24px 0;
+}
+
+.form-section_append {
+    margin-top: 24px;
+}
+
+.form-section_append button {
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    outline: none;
+    color: var(--blue);
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 28px;
+}
+
+.form-section_append button:hover {
+    text-decoration: underline;
+}
+
+.form__row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__col + .form-col {
+    margin-top: 16px;
+}
+
+.form__col:first-child {
+    margin-left: 0;
+}
+
+@media all and (min-width: 992px) {
+    .form-section.form-section_inner {
+        padding: 28px 25% 4px 24px;
+    }
+
+    .form-section_inner .remove-button {
+        top: 20px;
+        right: 20px;
+    }
+
+    .form__row {
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 -12px;
+    }
+
+    .form__col {
+        flex: 1 1 auto;
+        padding: 0 12px;
+        margin-top: 0;
+    }
+
+    .form__col:first-child {
+        margin-left: 0;
+    }
+}
