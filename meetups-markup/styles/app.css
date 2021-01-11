@@ -1,3 +1,5 @@
+/* Only common styles, without component styles */
+
 @import "_variables.css";
 @import "_typography.css";
 @import "_common.css";
