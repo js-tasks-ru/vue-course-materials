@@ -15,9 +15,11 @@ export default {
 
   computed: {
     user() {
+      return this.$root.user;
     },
 
     isAuthenticated() {
+      return this.$root.isAuthenticated;
     },
   },
 };

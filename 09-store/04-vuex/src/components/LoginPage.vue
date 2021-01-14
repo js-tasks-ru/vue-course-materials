@@ -1,8 +1,9 @@
 <template>
   <form @submit.prevent="handleSubmit">
+    <p v-if="error">{{ error }}</p>
+    <p v-if="isLoading">Loading...</p>
     <p>
-      <input v-model="email" placeholder="email" />
-    </p>
+      <input v-model="email" placeholder="email" /></p>
     <p>
       <input v-model="password" type="password" placeholder="password" />
     </p>
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'LoginPage',
@@ -24,10 +26,24 @@ export default {
     };
   },
 
-  computed: {},
+  computed: {
+    ...mapState('auth', {
+      isLoading: (state) => state.isLoading,
+      error: (state) => state.error,
+    }),
+  },
 
   methods: {
-    handleSubmit() {},
+    ...mapActions('auth', {
+      login: 'LOGIN',
+    }),
+
+    handleSubmit() {
+      this.login({
+        email: this.email,
+        password: this.password,
+      });
+    },
   },
 };
 </script>

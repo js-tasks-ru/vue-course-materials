@@ -21,7 +21,15 @@ export default {
     };
   },
 
+  inject: {
+    store: 'store',
+  },
+
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      this.store.login(this.email, this.password).catch((error) => {
+        alert(error.message);
+      });
+    },
   },
 };

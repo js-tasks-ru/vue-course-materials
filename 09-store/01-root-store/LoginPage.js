@@ -22,6 +22,10 @@ export default {
   },
 
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      this.$root.login(this.email, this.password).catch((error) => {
+        alert(error.message);
+      });
+    },
   },
 };

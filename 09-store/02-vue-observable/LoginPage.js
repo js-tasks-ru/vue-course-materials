@@ -1,3 +1,5 @@
+import { store } from './store.js';
+
 export default {
   name: 'LoginPage',
 
@@ -21,7 +23,16 @@ export default {
     };
   },
 
+  // Можно использовать provide/inject, чтобы дальше использовать из контекста, а не импортировать
+  // inject: {
+  //   store: 'store',
+  // },
+
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      store.auth.login(this.email, this.password).catch((error) => {
+        alert(error.message);
+      });
+    },
   },
 };

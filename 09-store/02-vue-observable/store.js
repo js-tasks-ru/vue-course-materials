@@ -1,29 +1,18 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
-import App from './App.js';
 import { loginWithApi } from './api.js';
 
-Vue.config.productionTip = false;
-
-new Vue({
-  data() {
-    return {
-      user_: null,
-    };
-  },
-
-  computed: {
-    user() {
-      return { ...this.user_ };
-    },
+export const store = {
+  auth: {
+    state: Vue.observable({
+      user: null,
+    }),
 
     isAuthenticated() {
-      return !!this.user_;
+      return !!this.state.user;
     },
-  },
 
-  methods: {
     setUser(user) {
-      this.user_ = user;
+      this.state.user = user;
     },
 
     login(email, password) {
@@ -32,6 +21,4 @@ new Vue({
       });
     },
   },
-
-  render: (h) => h(App),
-}).$mount('#app');
+};
