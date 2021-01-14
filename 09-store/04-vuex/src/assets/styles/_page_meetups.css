@@ -1,0 +1,46 @@
+.meetup__empty {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    line-height: 28px;
+    color: var(--blue-2);
+    border: 2px solid var(--blue-light);
+    border-radius: 8px;
+    margin: 32px 0;
+}
+
+.filters-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 40px 0 32px 0;
+}
+
+.filters-panel__col {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+@media all and (max-width: 767px) {
+    .filters-panel {
+        flex-direction: column;
+    }
+
+    .filters-panel__col + .filters-panel__col {
+        margin-top: 16px;
+    }
+}
+
+@media all and (max-width: 480px) {
+    #filters-panel__search {
+        width: calc(100% - 112px);
+    }
+
+    #filters-panel__search > .form-control {
+        max-width: 100%;
+    }
+}
