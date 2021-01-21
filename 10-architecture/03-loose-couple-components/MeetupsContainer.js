@@ -1,5 +1,3 @@
-import { MeetupsFilters } from './MeetupsFilters.js';
-import { MeetupsView } from './MeetupsView.js';
 import meetups from './meetups-data.js';
 
 function getMeetups() {
@@ -7,21 +5,19 @@ function getMeetups() {
     setTimeout(() => {
       resolve(meetups);
     }, 1000);
-  })
+  });
 }
 
-export const MeetupsPage = {
+export const MeetupsContainer = {
   template: `
     <div>
       <div class="filters">
-        <meetups-filters :filter.sync="filter" />
+        <slot name="filters" :filter="filter" :updateFilter="(value) => filter = value" />
       </div>
       <div class="meetups-view">
-        <meetups-view v-if="meetups" :meetups="filteredMeetups"/>
+        <slot name="view" :meetups="filteredMeetups" />
       </div>
     </div>`,
-
-  components: { MeetupsView, MeetupsFilters },
 
   data() {
     return {
@@ -38,7 +34,9 @@ export const MeetupsPage = {
 
   computed: {
     filteredMeetups() {
-      return this.meetups.filter((meetup) => meetup.title.includes(this.filter));
+      return this.meetups.filter((meetup) =>
+        meetup.title.includes(this.filter),
+      );
     },
   },
 };

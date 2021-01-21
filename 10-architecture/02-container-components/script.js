@@ -1,12 +1,23 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 
-const ListComponent = {
+const ListView = {
   template: `
     <ul>
       <li v-for="item in items">
         {{ item }}
       </li>
     </ul>`,
+
+  props: {
+    items: {
+      type: Array,
+      required: true
+    },
+  },
+};
+
+const ListContainer = {
+  template: `<list-view :items="items" />`,
 
   data() {
     return {
@@ -23,17 +34,16 @@ const ListComponent = {
       this.items = [1, 2, 3];
     },
   },
-}
-
+};
 
 const App = {
   template: `
     <div>
-      <list-component />
+      <list-container />
     </div>`,
 
   components: {
-    ListComponent,
+    ListContainer,
   },
 };
 
