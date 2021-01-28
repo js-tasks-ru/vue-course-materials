@@ -1,3 +1,5 @@
+import { ref } from './vue3.esm-browser.js';
+
 export default {
   name: 'AppToast',
 
@@ -8,18 +10,19 @@ export default {
       </div>
     </div>`,
 
-  data() {
-    return {
-      toast: null,
-    };
-  },
+  setup() {
+    const toast = ref(null);
 
-  methods: {
-    success(message) {
-      this.toast = message;
+    const success = (message) => {
+      toast.value = message;
       setTimeout(() => {
-        this.toast = null;
+        toast.value = null;
       }, 2000);
-    },
+    };
+
+    return {
+      success,
+      toast,
+    };
   },
 };
