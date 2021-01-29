@@ -1,17 +1,16 @@
 <template>
-  <button class="button">
+  <button :class="$style.button">
     <slot />
   </button>
 </template>
 
 <script>
 export default {
-  name: "AppButton",
+  name: 'AppButton',
 };
 </script>
 
 <style module>
-
 .button {
   display: inline-block;
   padding: 10px 24px;
@@ -21,7 +20,7 @@ export default {
   color: #4c6bb6;
   text-align: center;
   border: 4px solid #4c6bb6;
-  transition: .2s all;
+  transition: 0.2s all;
   outline: none;
   box-shadow: none;
   background-color: #fff;
@@ -31,5 +30,10 @@ export default {
 
 .button:hover {
   border-color: #b8c5e2;
+}
+
+/* Работает через global */
+.button :global(.deep) {
+  color: red;
 }
 </style>

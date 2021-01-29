@@ -10,7 +10,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .button {
   display: inline-block;
   padding: 10px 24px;
@@ -30,5 +30,20 @@ export default {
 
 .button:hover {
   border-color: #b8c5e2;
+}
+
+/* Работает, так как scoped стили действуют на корневой элемент дочерних компонентов */
+.button .root {
+  font-style: italic;
+}
+
+/* Не работает, scoped стили не действуют на содержимое других компонентов */
+.button .deep {
+  color: red;
+}
+
+/* Работает, используется >>> */
+.button >>> .deep {
+  text-transform: uppercase;
 }
 </style>

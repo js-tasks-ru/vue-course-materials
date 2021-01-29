@@ -1,0 +1,31 @@
+.meetup-form__aside {
+    margin: 48px 0;
+}
+
+.meetup-form__aside_stick > .button {
+    margin: 0 0 12px 0;
+}
+
+@media all and (min-width: 992px) {
+    .meetup-form {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .meetup-form__content {
+        flex: 1 0 calc(100% - 320px);
+    }
+
+    .meetup-form__aside {
+        flex: 1 0 320px;
+        max-width: 320px;
+        width: 100%;
+        padding-left: 137px;
+        margin: 0;
+    }
+
+    .meetup-form__aside_stick{
+        position: sticky;
+        top: 32px;
+    }
+}
