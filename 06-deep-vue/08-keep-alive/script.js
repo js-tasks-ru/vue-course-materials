@@ -38,8 +38,10 @@ const MeetupsCalendar = {
 const App = {
   template: `<div>
     <p><label><input v-model="view" type="radio" value="list"> Список</label></p>
-    <p><label><input v-model="view" type="radio" value="calendar"> Календарь</label></p>/>
-    <component :is="viewComponent" :meetups="meetups"/>
+    <p><label><input v-model="view" type="radio" value="calendar"> Календарь</label></p>
+    <keep-alive>
+      <component :is="viewComponent" :meetups="meetups"/>
+    </keep-alive>
   </div>`,
 
   components: {

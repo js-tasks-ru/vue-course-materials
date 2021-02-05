@@ -6,7 +6,7 @@ const TextDiv = {
   // template: '<div>TextDiv</div>',
 
   render(h) {
-    return h('div', 'TextDiv');
+    return <div>TextDiv</div>;
   },
 };
 
@@ -16,7 +16,7 @@ const FieldsetComponent = {
   // template: '<fieldset><slot /></fieldset>',
 
   render(h) {
-    return h('fieldset', this.$slots.default);
+    return <fieldset>{this.$slots.default}</fieldset>;
   },
 };
 
@@ -34,16 +34,10 @@ const CounterButton = {
   },
 
   render(h) {
-    return h(
-      'button',
-      {
-        on: {
-          click: () => {
-            this.$emit('change', this.count + 1);
-          },
-        },
-      },
-      this.count,
+    return (
+      <button onClick={this.$emit('change', this.count + 1)}>
+        {this.count}
+      </button>
     );
   },
 };
@@ -51,14 +45,15 @@ const CounterButton = {
 const App = {
   name: 'App',
 
-  // template: `<fieldset-component>
-  //   <text-div />
-  //   <counter-button v-model="count" />
-  // </fieldset-component>`,
+  template: `<fieldset-component>
+    <text-div />
+    <counter-button v-model="count" />
+  </fieldset-component>`,
 
   components: {
-    // FieldsetComponent,
-    // TextDiv,
+    FieldsetComponent,
+    TextDiv,
+    CounterButton,
   },
 
   data() {
@@ -68,20 +63,11 @@ const App = {
   },
 
   render(h) {
-    const counterButton = h(CounterButton, {
-      props: {
-        count: this.count,
-      },
-      on: {
-        change: ($event) => {
-          this.count = $event;
-        },
-      },
-    });
+    const counterButton = <CounterButton vModel={this.count} />;
 
-    const content = [h(TextDiv), counterButton];
+    const content = [<TextDiv />, counterButton];
 
-    return h(FieldsetComponent, content);
+    return <FieldsetComponent>{content}</FieldsetComponent>;
   },
 };
 

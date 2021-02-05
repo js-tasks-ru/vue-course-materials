@@ -39,20 +39,26 @@ const App = {
   template: `<div>
     <p><label><input v-model="view" type="radio" value="list"> Список</label></p>
     <p><label><input v-model="view" type="radio" value="calendar"> Календарь</label></p>
-    <meetups-list v-if="view === 'list'" :meetups="meetups" />
-    <meetups-calendar v-else :meetups="meetups" />
+    <component :is="viewComponent" :meetups="meetups" />
+    <!-- <component is="b">Bold Text</component> -->
   </div>`,
 
-  components: {
-    MeetupsList,
-    MeetupsCalendar,
-  },
+  // components: {
+  //   MeetupsList,
+  //   MeetupsCalendar,
+  // },
 
   data() {
     return {
       view: 'list',
       meetups: ['a', 'b'],
     };
+  },
+
+  computed: {
+    viewComponent() {
+      return this.view === 'list' ? MeetupsList : MeetupsCalendar;
+    },
   },
 };
 
