@@ -1,5 +1,3 @@
-import AppToast from './AppToast.js';
-
 export default {
   name: 'SamplePage',
 
@@ -12,15 +10,12 @@ export default {
         width: 500px;
         height: 500px;"
     >
-      <app-toast ref="localToaster" />
-      <button @click="localToast">Local Toast</button>
+      <button @click="toast">Toast</button>
     </div>`,
 
-  components: { AppToast },
-
   methods: {
-    localToast() {
-      this.$refs['localToaster'].success('Toast');
+    toast() {
+      this.$toaster.success('Toast');
     },
   },
 };

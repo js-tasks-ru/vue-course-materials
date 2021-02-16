@@ -4,8 +4,10 @@ const ListView = {
   template: `
     <ul>
       <li v-for="(item, idx) in items_">
-        <span>{{ item }}</span>
-        <button @click="remove(idx)">x</button>
+        <slot :item="item" :removeItem="() => remove(idx)" :index="index">
+          <span>{{ item }}</span>
+          <button @click="remove(index)">x</button>
+        </slot>
       </li>
     </ul>`,
 
@@ -29,17 +31,29 @@ const ListView = {
   },
 
   methods: {
-    remove(idx) {
-      this.items_.splice(idx, 1);
+    remove(index) {
+      this.items_.splice(index, 1);
       this.$emit('update:items', [...this.items_]);
     },
   },
+
+  // template: `<p> <slot /> </p>`,
+  render(h) {
+    return h('p', this.$scopedSlots.default());
+    return h('p', this.$slots.default);
+  },
+  // template: `<p> <slot :item="item" /> </p>`,
+  // render(h) {
+  //   return h('p', this.$scopedSlots.default({ item: this.item }));
+  // },
 };
 
 const App = {
   template: `
     <div>
-      <list-view :items.sync="list" />
+      <list-view :items.sync="list" v-slot="{ item, index, removeItem }">
+        <a href="#" @click="removeItem">{{ item }}</a>
+      </list-view>
     </div>`,
 
   components: {

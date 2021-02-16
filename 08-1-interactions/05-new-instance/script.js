@@ -1,7 +1,7 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js';
 
-import AppToast from './AppToast.js';
 import SamplePage from './SamplePage.js';
+import { toaster } from './toaster.js';
 
 const App = {
   name: 'App',
@@ -13,9 +13,9 @@ const App = {
 
   components: {
     SamplePage,
-    AppToast,
   },
 };
 
+Vue.prototype.$toaster = toaster;
 
 const app = new Vue(App).$mount('#app');

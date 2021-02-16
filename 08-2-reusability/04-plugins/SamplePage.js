@@ -16,6 +16,7 @@ export default {
   methods: {
     prototypeToast() {
       this.$toaster.success('prototypeToast');
+      this.$toasterSuccess('Success from global mixin');
     },
   },
 };

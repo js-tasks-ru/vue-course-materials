@@ -2,10 +2,11 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js
 
 import AppToast from './AppToast.js';
 import SamplePage from './SamplePage.js';
+import { ToasterPlugin } from './ToasterPlugin';
 
-import { toaster } from './toaster.js';
-
-Vue.prototype.$toaster = toaster;
+Vue.use(ToasterPlugin, {
+  container: '#toaster',
+});
 
 const App = {
   name: 'App',
@@ -20,6 +21,5 @@ const App = {
     AppToast,
   },
 };
-
 
 const app = new Vue(App).$mount('#app');
