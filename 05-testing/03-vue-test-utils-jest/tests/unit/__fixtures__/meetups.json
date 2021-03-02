@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "MSK VUE.JS MEETUP #1",
+    "description": "С каждым днем Vue.js становится популярней, все больше разработчиков и компаний делают ставку на данную технологию — 18 июля при поддержке компании Voximplant пройдет митап сообщества MSK VUE.JS, посвященный фреймворку. Спикеры поделятся опытом разработки, участники сообщества обсудят перспективы развития Vue.js.\n\nhttps://voximplant.timepad.ru/event/986750/",
+    "imageId": 1,
+    "date": 1588896000000,
+    "organizer": "Игорь Ш.",
+    "place": "Москва, офис Voximplant (ул. Мытная 66)"
+  },
+  {
+    "id": 2,
+    "title": "Демо-Митап",
+    "description": "Описание демонстрационного митапа\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "imageId": null,
+    "date": 1595261759010,
+    "organizer": "Demo Organizer",
+    "place": "Internet"
+  }
+]
