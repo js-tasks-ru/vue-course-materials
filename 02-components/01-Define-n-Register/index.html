@@ -1,18 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
 </head>
 <body>
 
-<div id="app">
+<template id="v-clock">
   <div>{{ time }}</div>
-</div>
+</template>
+
+<script id="v-clock-x" type="text/x-template">
+  <div>{{ time }}</div>
+</script>
+
+<main id="app">
+  <v-clock></v-clock>
+  <v-clock-2></v-clock-2>
+  <v-clock-3></v-clock-3>
+  <v-clock-4></v-clock-4>
+  <v-clock-5></v-clock-5>
+  <v-clock-6></v-clock-6>
+</main>
 
 <script type="module">
   import Vue from './vendor/vue.esm.browser.js';
 
-  const app = new Vue({
+  const VClock = {
     data() {
       return {
         time: '',
@@ -37,10 +50,131 @@
       },
     },
 
-    template: `#app`,
+    template: `#v-clock`,
+  };
+
+  const VClockX = {
+    data() {
+      return {
+        time: '',
+        intervalId: null,
+      };
+    },
+
+    created() {
+      this.updateTime();
+      this.intervalId = setInterval(() => {
+        this.updateTime();
+      }, 1000);
+    },
+
+    beforeDestroy() {
+      clearInterval(this.intervalId);
+    },
+
+    methods: {
+      updateTime() {
+        this.time = new Date().toLocaleTimeString();
+      },
+    },
+
+    template: `#v-clock-x`,
+  };
+
+  const VClock3 = {
+    data() {
+      return {
+        time: '',
+        intervalId: null,
+      };
+    },
+
+    created() {
+      this.updateTime();
+      this.intervalId = setInterval(() => {
+        this.updateTime();
+      }, 1000);
+    },
+
+    beforeDestroy() {
+      clearInterval(this.intervalId);
+    },
+
+    methods: {
+      updateTime() {
+        this.time = new Date().toLocaleTimeString();
+      },
+    },
+
+    template: `<div>{{ time }}</div>`,
+  };
+
+  Vue.component('VClock5', {
+    data() {
+      return {
+        time: '',
+        intervalId: null,
+      };
+    },
+
+    created() {
+      this.updateTime();
+      this.intervalId = setInterval(() => {
+        this.updateTime();
+      }, 1000);
+    },
+
+    beforeDestroy() {
+      clearInterval(this.intervalId);
+    },
+
+    methods: {
+      updateTime() {
+        this.time = new Date().toLocaleTimeString();
+      },
+    },
+
+    template: `<div>{{ time }}</div>`,
   });
 
-  app.$mount('#app');
+  new Vue({
+    el: `#app`,
+
+    components: {
+      VClock,
+      VClock2: VClockX,
+      VClock3,
+      VClock4: {
+        data() {
+          return {
+            time: '',
+            intervalId: null,
+          };
+        },
+
+        created() {
+          this.updateTime();
+          this.intervalId = setInterval(() => {
+            this.updateTime();
+          }, 1000);
+        },
+
+        beforeDestroy() {
+          clearInterval(this.intervalId);
+        },
+
+        methods: {
+          updateTime() {
+            this.time = new Date().toLocaleTimeString();
+          },
+        },
+
+        template: `<div>{{ time }}</div>`,
+      },
+      // Нет VClock5, он зарегистрирован глобально
+      VClock6: () => import('./VClock.js'),
+    },
+  });
 </script>
 
 </body>
