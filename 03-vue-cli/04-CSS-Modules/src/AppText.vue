@@ -6,10 +6,9 @@
 
 <script>
 export default {
-  name: "AppText",
+  name: 'AppText',
   props: ['text'],
-}
+};
 </script>
 
-<style>
-</style>
+<style></style>

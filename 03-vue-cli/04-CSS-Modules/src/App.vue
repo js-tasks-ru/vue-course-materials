@@ -12,10 +12,9 @@ import AppButton from './AppButton.vue';
 import AppText from './AppText.vue';
 
 export default {
-  name: "App.vue",
+  name: 'App.vue',
   components: { AppText, AppButton },
-}
+};
 </script>
 
-<style>
-</style>
+<style></style>
