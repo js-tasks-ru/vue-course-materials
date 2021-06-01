@@ -1,0 +1,622 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Митапы | Meetups</title>
+  </head>
+  <body>
+    <div id="app"  class="wrapper bg-grey">
+      <header class="header">
+        <h1>
+          <a href="/"><img src="img/logo.svg" alt="Meetups" /></a>
+        </h1>
+        <nav>
+          <a href="index.html?participation=attending" class="">Мои митапы</a>
+          <a href="index.html?participation=organizing" class="">Организуемые митапы</a>
+          <a href="meetup-form.html">Создать митап</a>
+          <a href="#">Demo Organizer (выйти)</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <div class="page page_meetup-forms">
+          <div class="container">
+            <h2 class="page__title">Редактирование митапа</h2>
+            <form class="form meetup-form">
+              <div class="meetup-form__content">
+                <fieldset class="form-section">
+                  <div class="form-group">
+                    <label class="form-label">Название</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Дата</label>
+                    <div class="input-group">
+                      <input type="date" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Место проведения</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Описание</label>
+                    <div class="input-group">
+                      <textarea rows="3" class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Изображение</label>
+                    <div class="image-uploader">
+                      <label class="image-uploader__preview">
+                        <span>Загрузить изображение</span>
+                        <input type="file" accept="image/*" class="form-control-file" />
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <h3 class="form__section-title">Программа</h3>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown show">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                        <span>Тип</span>
+                        <span> - Открытие</span>
+                      </button>
+                      <div class="dropdown__menu show">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-key.svg" class="icon" /><span>Тип</span
+                        ><span> - Регистрация</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-tv.svg" class="icon" /><span>Тип</span><span> - Доклад</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Тема</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Докладчик</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Описание</label>
+                    <div class="input-group">
+                      <textarea class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Язык</label>
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle">
+                        <span>Язык</span><span> - RU</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item">
+                          Не указано
+                        </button>
+                        <button type="button" class="dropdown__item active">
+                          RU
+                        </button>
+                        <button type="button" class="dropdown__item">
+                          EN
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                        <span>Тип</span><span> - Coffee Break</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-clock.svg" class="icon" /><span>Тип</span
+                        ><span> - Перерыв</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-key.svg" class="icon" /><span>Тип</span
+                        ><span> - Закрытие</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section form-section_inner mb-3">
+                  <button type="button" class="remove-button">
+                    <img alt="icon" src="icons/icon-trash.svg" class="icon" />
+                  </button>
+                  <div class="form-group">
+                    <div class="dropdown">
+                      <button type="button" class="button button dropdown__toggle dropdown__toggle_icon">
+                        <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" /><span>Тип</span
+                        ><span> - Afterparty</span>
+                      </button>
+                      <div class="dropdown__menu" style="display: none;">
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Регистрация
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Открытие
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-clock.svg" class="icon" />
+                          Перерыв
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                          Coffee Break
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                          Закрытие
+                        </button>
+                        <button type="button" class="dropdown__item active dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Afterparty
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                          Доклад
+                        </button>
+                        <button type="button" class="dropdown__item dropdown__item_icon">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                          Другое
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Начало</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form__col">
+                      <div class="form-group">
+                        <label class="form-label">Окончание</label>
+                        <div class="input-group">
+                          <input type="time" placeholder="00:00" class="form-control" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Нестандартный текст (необязательно)</label>
+                    <div class="input-group">
+                      <input class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-section_append">
+                  <button type="button">+ Добавить этап программы</button>
+                </div>
+              </div>
+              <div class="meetup-form__aside">
+                <div class="meetup-form__aside_stick">
+                  <button type="button" class="button button_secondary button_block">
+                    Отмена
+                  </button>
+                  <button type="submit" class="button button_primary button_block">
+                    Сохранить
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          © 2021. learn.javascript.ru <a href="https://learn.javascript.ru/courses/vue">Vue.js Course</a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>

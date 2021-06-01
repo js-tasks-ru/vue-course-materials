@@ -1,0 +1,177 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Митапы | Meetups</title>
+  </head>
+  <body>
+    <div id="app" class="wrapper bg-grey">
+      <header class="header">
+        <h1>
+          <a href="/"><img src="img/logo.svg" alt="Meetups" /></a>
+        </h1>
+        <nav>
+          <a href="index.html">← Вернуться к списку</a>
+          <a href="index.html?participation=attending" class="">Мои митапы</a>
+          <a href="index.html?participation=organizing" class="">Организуемые митапы</a>
+          <a href="meetup-form.html">Создать митап</a>
+          <a href="#">Demo Organizer (выйти)</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <div class="bg-white">
+          <div class="meetup-cover" style="--bg-url: url('https://course-vue.javascript.ru/api/images/4');">
+            <h1 class="meetup-cover__title">Vue.js Moscow #3 - Ozon</h1>
+          </div>
+          <div class="container">
+            <div class="meetup">
+              <div class="meetup__content">
+                <div class="content-tabs">
+                  <div class="content-tabs__nav">
+                    <a href="meetup-description.html" class="content-tabs__tab">
+                      Описание
+                    </a>
+                    <a href="meetup-agenda.html" class="content-tabs__tab content-tabs__tab_active">
+                      Программа
+                    </a>
+                  </div>
+                  <div class="content-tabs__content">
+                    <div class="meetup-agenda" id="5">
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-key.svg" class="icon" />
+                        </div>
+
+                        <div class="meetup-agenda__item-col">19:00 - 19:30</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Сбор и регистрация</h5>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">19:30 - 20:00</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Vue, Typescript и JSX</h5>
+                          <p>
+                            <span>Евгений Петухов, Ozon</span><span class="meetup-agenda__dot"></span
+                            ><span class="meetup-agenda__lang">RU</span>
+                          </p>
+                          <p class="pre-line">Один из существенных недостатков Vue - плохая совместимость с TypeScript из коробки 😅 Я
+                            расскажу как победить этот недостаток и начать писать type-safe приложения ✌️!
+                          </p>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">20:00 - 20:30</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Интеграция и использование Redux во Vue.js</h5>
+                          <p>
+                            <span>Анатолий Колесов, Ведущий разработчик, Банк Восточный</span
+                            ><span class="meetup-agenda__dot"></span><span class="meetup-agenda__lang">RU</span>
+                          </p>
+                          <p class="pre-line">Доклад о варианте интеграции Redux.js во Vue.js, используя Vuex.</p>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-coffee.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">20:30 - 20:40</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Перерыв на кофе и обсуждения</h5>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">20:40 - 21:10</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Quasar Framework и SunEngine</h5>
+                          <p>
+                            <span>Дмитрий Полянин, lead developer at SunEngine</span
+                            ><span class="meetup-agenda__dot"></span><span class="meetup-agenda__lang">RU</span>
+                          </p>
+                          <p class="pre-line">Расскажу про очень функциональный UI и не только UI фреймворк Quasar и продемонстрирую
+                            наиболее эффектные его компоненты. Расскажу про проект SunEngine и использования Quasar в
+                            реальной практике.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-tv.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">21:10 - 21:40</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Модульно-микросервисная архитектура на на Vue.js</h5>
+                          <p>
+                            <span>Никита Соболев, CTO at wemake.services</span><span class="meetup-agenda__dot"></span
+                            ><span class="meetup-agenda__lang">RU</span>
+                          </p>
+                          <p class="pre-line">За последние пару месяцев я просмотрел порядка 20 тестовых заданий для Vue. Все плохо.
+                            Основная проблема в том, что люди не умеют (или не хотят) разделять слой представления и
+                            слой бизнес-логики в своих приложениях. Я расскажу, как, используя простые паттерны и
+                            подходы, можно писать большие и сложные приложения. И чтобы их было легко читать,
+                            тестировать и менять.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="meetup-agenda__item">
+                        <div class="meetup-agenda__item-col">
+                          <img alt="icon" src="icons/icon-cal-sm.svg" class="icon" />
+                        </div>
+                        <div class="meetup-agenda__item-col">21:40 - 23:00</div>
+                        <div class="meetup-agenda__item-col">
+                          <h5 class="meetup-agenda__title">Afterparty</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="meetup__aside">
+                <ul class="info-list">
+                  <li>
+                    <img alt="icon" src="icons/icon-user.svg" class="icon info-list__icon" />
+                    Eugeny F.
+                  </li>
+                  <li>
+                    <img alt="icon" src="icons/icon-map.svg" class="icon info-list__icon" />
+                    Москва, Офис компании Mail.Ru Group
+                  </li>
+                  <li>
+                    <img alt="icon" src="icons/icon-cal-lg.svg" class="icon info-list__icon" />
+                    <time datetime="Tue May 12 2020 05:00:00 GMT+0500 (Екатеринбург, стандартное время)">
+                      12 мая 2020 г.
+                    </time>
+                  </li>
+                </ul>
+                <div class="meetup__aside-buttons">
+                  <a href="meetup-form.html" class="button button_primary">Редактировать</a>
+                  <button class="button button_danger">Удалить</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          © 2021. learn.javascript.ru <a href="https://learn.javascript.ru/courses/vue">Vue.js Course</a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>

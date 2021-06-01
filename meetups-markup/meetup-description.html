@@ -1,0 +1,84 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Митапы | Meetups</title>
+  </head>
+  <body>
+    <div id="app" class="wrapper bg-grey">
+      <header class="header">
+        <h1>
+          <a href="/"><img src="img/logo.svg" alt="Meetups" /></a>
+        </h1>
+        <nav>
+          <a href="index.html">← Вернуться к списку</a>
+          <a href="login.html">Вход</a>
+          <a href="register.html">Регистрация</a>
+          <a href="meetup-form.html">Создать митап</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <div class="bg-white">
+          <div class="meetup-cover" style="--bg-url: url('https://course-vue.javascript.ru/api/images/4');">
+            <h1 class="meetup-cover__title">Vue.js Moscow #3 - Ozon</h1>
+          </div>
+          <div class="container">
+            <div class="meetup">
+              <div class="meetup__content">
+                <div class="content-tabs">
+                  <div class="content-tabs__nav">
+                    <a href="meetup-description.html" class="content-tabs__tab content-tabs__tab_active">
+                      Описание
+                    </a>
+                    <a href="meetup-agenda.html" class="content-tabs__tab">
+                      Программа
+                    </a>
+                  </div>
+                  <div class="content-tabs__content">
+                    <p class="meetup-description pre-line">Друзья привет! Открываем регистрацию на третью встречу JavaScript/Vue.js разработчиков и всех интересующихся. В этот раз мы побываем в гостях у компании Ozon по адресу – “Москва, Пресненская Набережная, 10 блок С, Башня на Набережной” Для тех кто все же не сможет до нас добраться, будет организована трансляция выступлений. Мероприятие бесплатное, но необходима регистрация, количество мест ограничено.
+                      До встречи!
+                      https://www.meetup.com/ru-RU/vue-js-moscow/events/263421476/
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="meetup__aside">
+                <ul class="info-list">
+                  <li>
+                    <img alt="icon" src="icons/icon-user.svg" class="icon info-list__icon" />
+                    Eugeny F.
+                  </li>
+                  <li>
+                    <img alt="icon" src="icons/icon-map.svg" class="icon info-list__icon" />
+                    Москва, Офис компании Mail.Ru Group
+                  </li>
+                  <li>
+                    <img alt="icon" src="icons/icon-cal-lg.svg" class="icon info-list__icon" />
+                    <time datetime="2020-05-12">
+                      12 мая 2020 г.
+                    </time>
+                  </li>
+                </ul>
+                <div class="meetup__aside-buttons">
+                  <button class="button button_primary">Участвовать</button>
+                  <button class="button button_secondary">Отменить участие</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          © 2021. learn.javascript.ru <a href="https://learn.javascript.ru/courses/vue">Vue.js Course</a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>

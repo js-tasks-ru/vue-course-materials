@@ -1,0 +1,57 @@
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Митапы | Meetups</title>
+  </head>
+  <body>
+    <div id="app" class="wrapper bg-grey">
+
+      <header class="header">
+        <h1>
+          <a href="/"><img src="img/logo.svg" alt="Meetups" /></a>
+        </h1>
+        <nav>
+          <a href="login.html">Вход</a>
+          <a href="register.html">Регистрация</a>
+          <a href="meetup-form.html">Создать митап</a>
+        </nav>
+      </header>
+
+      <main class="main">
+        <div class="page page_onboarding">
+          <div class="container">
+            <h1 class="page__title text-center">Вход</h1>
+            <form class="form">
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <div class="input-group">
+                  <input type="email" placeholder="demo@email" class="form-control" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Пароль</label>
+                <div class="input-group">
+                  <input type="password" placeholder="password" class="form-control" />
+                </div>
+              </div>
+              <div class="form__buttons">
+                <button type="submit" class="button button_primary button_block">Войти</button>
+              </div>
+              <div class="form__append">Нет аккаунта? <a href="register.html" class="link">Зарегистрируйтесь</a></div>
+            </form>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container">
+          © 2021. learn.javascript.ru <a href="https://learn.javascript.ru/courses/vue">Vue.js Course</a>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>
