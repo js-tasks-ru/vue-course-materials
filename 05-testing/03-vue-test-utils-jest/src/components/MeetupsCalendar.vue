@@ -1,5 +1,5 @@
 <template>
-  <div>Calendar</div>
+  <div class="meetups-calendar">Calendar</div>
 </template>
 
 <script>

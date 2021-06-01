@@ -95,10 +95,9 @@ export default {
           : undefined,
         coverStyle: meetup.imageId
           ? {
-            '--bg-url': `url('https://course-vue.javascript.ru/api/images/${meetup.imageId}')`,
-          }
+              '--bg-url': `url('https://course-vue.javascript.ru/api/images/${meetup.imageId}')`,
+            }
           : {},
-        date: new Date(meetup.date),
         localDate: new Date(meetup.date).toLocaleString(navigator.language, {
           year: 'numeric',
           month: 'long',
