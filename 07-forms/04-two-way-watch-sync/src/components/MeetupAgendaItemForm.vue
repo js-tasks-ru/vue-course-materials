@@ -51,6 +51,7 @@
 
 <script>
 import AppIcon from '@/components/AppIcon';
+import { deepEqual } from '@/utils';
 
 export default {
   name: 'MeetupAgendaItemForm',
@@ -68,15 +69,25 @@ export default {
 
   data() {
     return {
-      localAgendaItem: { ...this.agendaItem },
+      localAgendaItem: null,
     };
   },
 
   watch: {
+    agendaItem: {
+      deep: true,
+      immediate: true,
+      handler(newValue) {
+        if (!deepEqual(newValue, this.localAgendaItem)) {
+          this.localAgendaItem = { ...this.agendaItem };
+        }
+      },
+    },
+
     localAgendaItem: {
       deep: true,
       handler(newValue) {
-        this.$emit('update:agendaItem', { ...this.agendaItem });
+        this.$emit('update:agendaItem', { ...newValue });
       },
     },
   },

@@ -1,29 +1,30 @@
 <template>
-  <form class="form meetup-form">
+  <form class="form meetup-form" @submit.prevent="handleSubmit">
     <div class="meetup-form__content">
       <fieldset class="form-section">
         <div class="form-group">
           <label class="form-label">Название</label>
-          <input class="form-control" v-model="meetup.title" />
+          <input class="form-control" v-model="localMeetup.title" />
         </div>
         <div class="form-group">
           <label class="form-label">Место проведения</label>
-          <input class="form-control" v-model="meetup.place" />
+          <input class="form-control" v-model="localMeetup.place" />
         </div>
       </fieldset>
 
       <h3 class="form__section-title">Программа</h3>
       <meetup-agenda-item-form
-        v-for="(agendaItem, idx) in meetup.agenda"
+        v-for="(agendaItem, index) in localMeetup.agenda"
         :key="agendaItem.id"
         :agenda-item="agendaItem"
-        @remove="removeAgendaItem(idx)"
+        @save="updateAgendaItem(index, $event)"
+        @remove="removeAgendaItem(index)"
         class="mb-3"
       />
 
       <div class="form-section_append">
         <button type="button" @click="addAgendaItem">
-          + Добавить пункт программы
+          + Добавить этап программы
         </button>
       </div>
     </div>
@@ -43,6 +44,7 @@
 
 <script>
 import MeetupAgendaItemForm from './MeetupAgendaItemForm';
+import { deepClone } from '@/utils';
 
 // Use negative IDs so it won't conflict with real id
 let lastId = -1;
@@ -73,14 +75,28 @@ export default {
     },
   },
 
+  data() {
+    return {
+      localMeetup: deepClone(this.meetup),
+    };
+  },
+
   methods: {
     addAgendaItem() {
       const newItem = createAgendaItem();
-      this.meetup.agenda.push(newItem);
+      this.localMeetup.agenda.push(newItem);
     },
 
-    removeAgendaItem(idx) {
-      this.meetup.agenda.splice(idx, 1);
+    updateAgendaItem(index, newItem) {
+      this.localMeetup.agenda.splice(index, 1, newItem);
+    },
+
+    removeAgendaItem(index) {
+      this.localMeetup.agenda.splice(index, 1);
+    },
+
+    handleSubmit() {
+      this.$emit('submit', deepClone(this.localMeetup));
     },
   },
 };

@@ -59,13 +59,11 @@
 
 <script>
 import MeetupAgendaItemForm from './MeetupAgendaItemForm';
-import { deepClone } from '@/utils';
+import { deepClone, deepEqual } from '@/utils';
 
-// Use negative IDs so it won't conflict with real id
-let lastId = -1;
 function createAgendaItem() {
   return {
-    id: lastId--,
+    id: Math.random(),
     startsAt: '00:00',
     endsAt: '00:00',
     type: 'other',
@@ -92,11 +90,21 @@ export default {
 
   data() {
     return {
-      localMeetup: deepClone(this.meetup),
+      localMeetup: null,
     };
   },
 
   watch: {
+    meetup: {
+      deep: true,
+      immediate: true,
+      handler(newValue) {
+        if (!deepEqual(newValue, this.localMeetup)) {
+          this.localMeetup = deepClone(this.meetup);
+        }
+      },
+    },
+
     localMeetup: {
       deep: true,
       handler(newValue) {

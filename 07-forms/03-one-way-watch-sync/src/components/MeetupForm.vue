@@ -1,5 +1,5 @@
 <template>
-  <form class="form meetup-form" @submit.prevent="handleSubmit">
+  <form class="form meetup-form">
     <div class="meetup-form__content">
       <fieldset class="form-section">
         <div class="form-group">
@@ -13,11 +13,26 @@
       </fieldset>
 
       <h3 class="form__section-title">Программа</h3>
+      <!-- НЕ РАБОТАЕТ
+      <meetup-agenda-item-form
+        v-for="(agendaItem, index) in localMeetup.agenda"
+        :key="agendaItem.id"
+        :agenda-item.sync="agendaItem"
+        @remove="removeAgendaItem(index)"
+        class="mb-3"
+      />
+      <meetup-agenda-item-form
+        v-for="(agendaItem, index) in localMeetup.agenda"
+        :key="agendaItem.id"
+        :agenda-item.sync="localMeetup.agenda[index]"
+        @remove="removeAgendaItem(index)"
+        class="mb-3"
+      />-->
       <meetup-agenda-item-form
         v-for="(agendaItem, index) in localMeetup.agenda"
         :key="agendaItem.id"
         :agenda-item="agendaItem"
-        @save="updateAgendaItem(index, $event)"
+        @update:agendaItem="updateAgendaItem(index, $event)"
         @remove="removeAgendaItem(index)"
         class="mb-3"
       />
@@ -81,6 +96,15 @@ export default {
     };
   },
 
+  watch: {
+    localMeetup: {
+      deep: true,
+      handler(newValue) {
+        this.$emit('update:meetup', deepClone(newValue));
+      },
+    },
+  },
+
   methods: {
     addAgendaItem() {
       const newItem = createAgendaItem();
@@ -93,10 +117,6 @@ export default {
 
     removeAgendaItem(index) {
       this.localMeetup.agenda.splice(index, 1);
-    },
-
-    handleSubmit() {
-      this.$emit('submit', deepClone(this.localMeetup));
     },
   },
 };

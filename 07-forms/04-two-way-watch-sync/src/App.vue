@@ -16,7 +16,7 @@ function createMeetup() {
     title: '',
     description: '',
     imageId: null,
-    date: '',
+    date: new Date(),
     place: '',
     agenda: [],
   };

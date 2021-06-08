@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper page container">
-    <meetup-form />
+    <meetup-form :meetup="meetup" />
     <hr />
     <button @click="updateMeetup">Update Meetup</button>
     <pre><code>{{ meetup }}</code></pre>
@@ -30,7 +30,9 @@ export default {
   },
 
   data() {
-    return {};
+    return {
+      meetup: createMeetup(),
+    };
   },
 
   methods: {

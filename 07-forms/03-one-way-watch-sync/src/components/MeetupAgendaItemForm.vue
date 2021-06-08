@@ -39,7 +39,6 @@
       <label class="form-label">Заголовок</label>
       <input class="form-control" v-model="localAgendaItem.title" />
     </div>
-
     <div class="form-group">
       <label class="form-label">Описание</label>
       <textarea
@@ -47,14 +46,11 @@
         v-model="localAgendaItem.description"
       ></textarea>
     </div>
-
-    <button type="button" @click="handleSave">Save</button>
   </div>
 </template>
 
 <script>
 import AppIcon from '@/components/AppIcon';
-import { deepClone } from '@/utils';
 
 export default {
   name: 'MeetupAgendaItemForm',
@@ -72,13 +68,16 @@ export default {
 
   data() {
     return {
-      localAgendaItem: deepClone(this.agendaItem),
+      localAgendaItem: { ...this.agendaItem },
     };
   },
 
-  methods: {
-    handleSave() {
-      this.$emit('save', deepClone(this.localAgendaItem));
+  watch: {
+    localAgendaItem: {
+      deep: true,
+      handler(newValue) {
+        this.$emit('update:agendaItem', { ...this.localAgendaItem });
+      },
     },
   },
 };
