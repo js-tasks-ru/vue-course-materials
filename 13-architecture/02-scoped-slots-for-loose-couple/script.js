@@ -33,8 +33,6 @@ const MeetupsView = {
 };
 
 const MeetupsPage = {
-  components: { MeetupsView, MeetupsFilters },
-
   data() {
     return {
       filter: '',
@@ -60,17 +58,27 @@ const MeetupsPage = {
 
   template: `
     <div>
-      <meetups-filters :filter.sync="filter" />
-      <meetups-view v-if="meetups" :meetups="filteredMeetups"/>
+      <slot name="filters" :filter="filter" :updateFilter="(value) => filter = value" />
+      <slot name="view" :meetups="filteredMeetups" />
     </div>`,
 };
 
 const App = {
-  components: { MeetupsPage },
+  components: { MeetupsPage, MeetupsView, MeetupsFilters },
 
   template: `
     <div id="app" class="page container">
-      <meetups-page />
+
+      <meetups-page>
+        <template #filters="{ filter, updateFilter }">
+          <meetups-filters :filter="filter" @update:filter="updateFilter" />
+        </template>
+
+        <template #view="{ meetups }">
+          <meetups-view :meetups="meetups" />
+        </template>
+
+      </meetups-page>
     </div>`,
 };
 
