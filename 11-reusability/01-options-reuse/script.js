@@ -1,38 +1,25 @@
 import Vue from './vendor/vue.esm.browser.js';
+import { windowSizeOptions } from './window-size-options.js';
+import { createLocalPropOptions } from './create-local-prop-options.js';
 
-const deepEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-const deepClone = (obj) => JSON.parse(JSON.stringify(obj));
+const userLocalPropOptions = createLocalPropOptions('user', {
+  propOptions: { type: Object },
+  localName: 'localUser',
+});
 
 const UserForm = {
   props: {
-    user: {
-      type: Object,
-    },
+    ...userLocalPropOptions.props,
   },
 
   data() {
     return {
-      localUser: null,
+      ...userLocalPropOptions.data(),
     };
   },
 
   watch: {
-    user: {
-      immediate: true,
-      deep: true,
-      handler(newValue) {
-        if (!deepEqual(this.user, this.localUser)) {
-          this.localUser = deepClone(newValue);
-        }
-      },
-    },
-
-    localUser: {
-      deep: true,
-      handler(newValue) {
-        this.$emit('update:user', deepClone(newValue));
-      },
-    },
+    ...userLocalPropOptions.watch,
   },
 
   template: `
@@ -47,8 +34,7 @@ const App = {
 
   data() {
     return {
-      windowWidth: document.documentElement.clientWidth,
-      windowHeight: document.documentElement.clientHeight,
+      ...windowSizeOptions.data(),
       user: {
         firstName: 'firstName',
         lastName: 'lastName',
@@ -57,18 +43,15 @@ const App = {
   },
 
   mounted() {
-    window.addEventListener('resize', this.updateWindowSize);
+    windowSizeOptions.mounted();
   },
 
   beforeDestroy() {
-    window.removeEventListener('resize', this.updateWindowSize);
+    windowSizeOptions.beforeDestroy();
   },
 
   methods: {
-    updateWindowSize() {
-      this.windowWidth = document.documentElement.clientWidth;
-      this.windowHeight = document.documentElement.clientHeight;
-    },
+    ...windowSizeOptions.methods,
   },
 
   template: `

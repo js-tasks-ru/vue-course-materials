@@ -1,9 +1,11 @@
 import Vue from './vendor/vue.esm.browser.js';
 
 import SamplePage from './SamplePage.js';
-import { toaster } from './toaster.js';
+import { ToasterPlugin } from './ToasterPlugin.js';
 
-Vue.prototype.$toaster = toaster;
+Vue.use(ToasterPlugin, {
+  container: '#toaster',
+});
 
 const App = {
   name: 'App',
