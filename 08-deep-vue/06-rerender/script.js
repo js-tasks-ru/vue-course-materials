@@ -71,7 +71,9 @@ const App = {
     <div>
       {{ log('App') }}
       <form-group v-for="input in inputs" :key="input.id" :code="input.id">
-        <app-input v-model="input.value" :code="input.id" />
+        <template #default>
+          <app-input v-model="input.value" :code="input.id" />
+        </template>
       </form-group>
     </div>`,
 };

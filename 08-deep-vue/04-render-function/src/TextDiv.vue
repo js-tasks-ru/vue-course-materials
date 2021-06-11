@@ -1,9 +1,16 @@
-<template>
+<!--<template>
   <div>TextDiv</div>
-</template>
+</template>-->
 
 <script>
 export default {
   name: 'TextDiv',
+
+  /*render(h) {
+    return h('div', 'TextDiv');
+  },*/
+  render(h) {
+    return <div>TextDiv</div>;
+  },
 };
 </script>
