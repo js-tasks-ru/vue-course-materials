@@ -1,4 +1,10 @@
-import Vue from './vendor/vue.esm.browser.js';
+import { createApp } from './vendor/vue3.esm-browser.js';
 import App from './App.js';
+import { ToasterPlugin } from './ToasterPlugin.js';
 
-new Vue(App).$mount('#app');
+createApp(App)
+  .provide('config', {
+    API_URL: 'https://course-vue.javascript.ru/api',
+  })
+  .use(ToasterPlugin)
+  .mount('#app');

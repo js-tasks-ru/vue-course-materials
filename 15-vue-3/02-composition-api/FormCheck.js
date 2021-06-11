@@ -1,16 +1,11 @@
 const FormCheck = {
   name: 'FormCheck',
 
-  model: {
-    prop: 'value',
-    event: 'change',
-  },
-
   props: {
     name: {
       type: String,
     },
-    value: {
+    modelValue: {
       type: String,
     },
     options: {
@@ -21,7 +16,7 @@ const FormCheck = {
 
   methods: {
     handleChange(option) {
-      this.$emit('change', option.value)
+      this.$emit('update:modelValue', option.value);
     },
   },
 
@@ -33,7 +28,7 @@ const FormCheck = {
           class="form-check__input"
           type="radio"
           :name="name"
-          :checked="option.value === value"
+          :checked="option.value === modelValue"
           @input="handleChange(option)"
           :value="option.value"
         />
