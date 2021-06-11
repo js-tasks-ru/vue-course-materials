@@ -1,9 +1,10 @@
 import TheToaster from './TheToaster.js';
+import { Portal } from './portal-vue.esm.min.js';
 
 export default {
   name: 'SamplePage',
 
-  components: { TheToaster },
+  components: { TheToaster, Portal },
 
   methods: {
     localToast() {
@@ -19,7 +20,9 @@ export default {
       width: 500px;
       height: 500px;"
     >
-      <the-toaster ref="localToaster" />
+      <portal to="root-end">
+        <the-toaster ref="localToaster" />
+      </portal>
       <button @click="localToast">Local Toast</button>
   </div>`,
 };

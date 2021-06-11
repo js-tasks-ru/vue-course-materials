@@ -1,11 +1,9 @@
-import { toaster } from './toaster.js';
-
 export default {
   name: 'SamplePage',
 
   methods: {
     toast() {
-      toaster.success('Toast');
+      this.$toaster.success('Toast');
     },
   },
 

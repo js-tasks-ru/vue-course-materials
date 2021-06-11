@@ -1,13 +1,14 @@
-import TheToaster from './TheToaster.js';
-
 export default {
   name: 'SamplePage',
 
-  components: { TheToaster },
+  inject: {
+    config: 'config',
+    toaster: 'toaster',
+  },
 
   methods: {
-    localToast() {
-      this.$refs['localToaster'].success('Toast');
+    toast() {
+      this.toaster.success(this.config.API_URL);
     },
   },
 
@@ -20,7 +21,6 @@ export default {
         width: 500px;
         height: 500px;"
     >
-      <the-toaster ref="localToaster" />
-      <button @click="localToast">Local Toast</button>
+      <button @click="toast">Toast</button>
     </div>`,
 };
