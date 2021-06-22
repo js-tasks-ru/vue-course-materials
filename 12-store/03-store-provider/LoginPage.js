@@ -8,8 +8,16 @@ export default {
     };
   },
 
+  inject: {
+    auth: 'auth',
+  },
+
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      this.auth
+        .login(this.email, this.password)
+        .catch((error) => alert(error.message));
+    },
   },
 
   template: `

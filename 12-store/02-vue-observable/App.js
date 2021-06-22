@@ -1,4 +1,5 @@
 import LoginPage from './LoginPage.js';
+import { getUser, isAuthenticated } from './auth-service.js';
 
 export default {
   name: 'App',
@@ -8,9 +9,13 @@ export default {
   },
 
   computed: {
-    user() {},
+    user() {
+      return getUser();
+    },
 
-    isAuthenticated() {},
+    isAuthenticated() {
+      return isAuthenticated();
+    },
   },
 
   template: `

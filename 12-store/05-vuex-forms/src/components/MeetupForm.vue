@@ -4,20 +4,19 @@
       <fieldset class="form-section">
         <div class="form-group">
           <label class="form-label">Название</label>
-          <input class="form-control" v-model="meetup.title" />
+          <input class="form-control" v-model.lazy="title" />
         </div>
         <div class="form-group">
           <label class="form-label">Место проведения</label>
-          <input class="form-control" v-model="meetup.place" />
+          <input class="form-control" v-model.lazy="place" />
         </div>
       </fieldset>
 
       <h3 class="form__section-title">Программа</h3>
       <meetup-agenda-item-form
-        v-for="(agendaItem, idx) in meetup.agenda"
+        v-for="(agendaItem, index) in meetup.agenda"
         :key="agendaItem.id"
-        :agenda-item="agendaItem"
-        @remove="removeAgendaItem(idx)"
+        :index="index"
         class="mb-3"
       />
 
@@ -43,10 +42,13 @@
 
 <script>
 import MeetupAgendaItemForm from './MeetupAgendaItemForm';
+import { mapMutations, mapState } from 'vuex';
+import { mapFields } from '@/store/helpers/mapFields.js';
 
+let lastId = -1;
 function createAgendaItem() {
   return {
-    id: Math.random(),
+    id: lastId--,
     startsAt: '00:00',
     endsAt: '00:00',
     type: 'other',
@@ -64,21 +66,33 @@ export default {
     MeetupAgendaItemForm,
   },
 
-  props: {
-    meetup: {
-      type: Object,
-      required: true,
-    },
+  computed: {
+    ...mapState('form', {
+      meetup: (state) => state.meetup,
+    }),
+
+    ...mapFields(['title', 'place'], 'getFieldValue', 'setFieldValue'),
   },
 
   methods: {
+    ...mapMutations('form', {
+      setMeetupField: 'SET_MEETUP_FIELD',
+      pushAgendaItem: 'PUSH_AGENDA_ITEM',
+    }),
+
     addAgendaItem() {
-      const newItem = createAgendaItem();
-      this.meetup.agenda.push(newItem);
+      this.pushAgendaItem(createAgendaItem());
     },
 
-    removeAgendaItem(idx) {
-      this.meetup.agenda.splice(idx, 1);
+    getFieldValue(field) {
+      return this.meetup[field];
+    },
+
+    setFieldValue(field, value) {
+      this.setMeetupField({
+        field,
+        value,
+      });
     },
   },
 };

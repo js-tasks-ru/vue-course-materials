@@ -7,10 +7,18 @@ export default {
     LoginPage,
   },
 
-  computed: {
-    user() {},
+  inject: {
+    auth: 'auth',
+  },
 
-    isAuthenticated() {},
+  computed: {
+    user() {
+      return this.auth.getUser();
+    },
+
+    isAuthenticated() {
+      return this.auth.isAuthenticated();
+    },
   },
 
   template: `

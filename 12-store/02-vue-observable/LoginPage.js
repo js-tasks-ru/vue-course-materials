@@ -1,3 +1,5 @@
+import { login } from './auth-service.js';
+
 export default {
   name: 'LoginPage',
 
@@ -9,7 +11,9 @@ export default {
   },
 
   methods: {
-    handleSubmit() {},
+    handleSubmit() {
+      login(this.email, this.password).catch((error) => alert(error.message));
+    },
   },
 
   template: `
