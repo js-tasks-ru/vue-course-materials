@@ -40,11 +40,6 @@ const MeetupsCalendar = {
 };
 
 const App = {
-  components: {
-    MeetupsList,
-    MeetupsCalendar,
-  },
-
   data() {
     return {
       view: 'list',
@@ -52,12 +47,27 @@ const App = {
     };
   },
 
+  // components: {
+  //   MeetupsList,
+  //   MeetupsCalendar,
+  // },
+
+  computed: {
+    viewComponent() {
+      const componentByView = {
+        list: MeetupsList,
+        calendar: MeetupsCalendar,
+      };
+      return componentByView[this.view];
+    },
+  },
+
   template: `
     <div>
       <p><label><input v-model="view" type="radio" value="list"> Список</label></p>
       <p><label><input v-model="view" type="radio" value="calendar"> Календарь</label></p>
-      <meetups-list v-if="view === 'list'" :meetups="meetups" />
-      <meetups-calendar v-else :meetups="meetups" />
+      <component :is="viewComponent" :meetups="meetups" />
+      <!-- <component is="b">Bold Text</component> -->
     </div>`,
 };
 
