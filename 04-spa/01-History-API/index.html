@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+<body>
+<h3>
+  Адрес страницы:<br>
+  <span id="title"></span>
+</h3>
+<h3>
+  Номер страницы: <span id="number"></span>
+</h3>
+<h4>А на самом деле страница не меняется</h4>
+<form>
+  <p><input placeholder="Поле ввода"></p>
+  <p><label><input type="radio" name="radio"> Option 1</label></p>
+  <p><label><input type="radio" name="radio"> Option 2</label></p>
+</form>
+<script>
+
+  const titleEl = document.getElementById('title');
+  const numEl = document.getElementById('number');
+
+  let i = 0;
+
+  const interval = setInterval(function() {
+    i++;
+
+    history.pushState({ num: i }, '', `/page/${i}`);
+    // Get URL from Location
+    titleEl.textContent = window.location;
+    // Get data from State
+    numEl.textContent = history.state.num;
+    if (i > 10) {
+      clearInterval(interval);
+    }
+  }, 500);
+</script>
+</body>
+</html>

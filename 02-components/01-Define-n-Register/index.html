@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+
+<div id="app">
+  <div>{{ time }}</div>
+</div>
+
+<script type="module">
+  import Vue from './vendor/vue.esm.browser.js';
+
+  const app = new Vue({
+    data() {
+      return {
+        time: '',
+        intervalId: null,
+      };
+    },
+
+    created() {
+      this.updateTime();
+      this.intervalId = setInterval(() => {
+        this.updateTime();
+      }, 1000);
+    },
+
+    beforeDestroy() {
+      clearInterval(this.intervalId);
+    },
+
+    methods: {
+      updateTime() {
+        this.time = new Date().toLocaleTimeString();
+      },
+    },
+
+    template: `#app`,
+  });
+
+  app.$mount('#app');
+</script>
+
+</body>
+</html>
